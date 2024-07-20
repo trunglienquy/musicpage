@@ -14,7 +14,7 @@ function Header( {showLogin} ) {
     return(
         <div className="navbar">
             <div className="title-page">
-                <a href="#">Emotional music</a> 
+                <a href="/" >Emotional music</a> 
             </div>
             <div className='emotion-user'>
                 <p>{title}</p>

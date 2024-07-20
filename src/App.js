@@ -1,7 +1,7 @@
 
 import { useState } from 'react';
-import Header from './Header/Header'
-import Login from './Login/Login'
+import Header from './components/Header/Header'
+import Login from './components/Login/Login'
 
 function App() {
 

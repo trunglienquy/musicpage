@@ -51,21 +51,23 @@ function Login({ showLogin }) {
           </div>
         </div>
         <button
-          className="btnLogin"
+          className={getUser && getPassword ? "active btnLogin" : "btnLogin"}
           onClick={handleLogin}
           disabled={getPassword && getUser ? false : true}
         >
           LOGIN
         </button>
-
         <br></br>
-        <ion-icon
-          name="close-outline"
-          className="closeLogin"
-          onClick={() => {
-            showLogin(false);
-          }}
-        ></ion-icon>
+        <div className="closeTab">
+          <ion-icon
+            name="close-outline"
+            className="closeLogin"
+            onClick={() => {
+              showLogin(false);
+            }}
+          ></ion-icon>
+
+        </div>
       </div>
     </>
   );

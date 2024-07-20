@@ -1,4 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
 .formLogin{
+    font-family: "Oswald", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
     position: relative;
     display: block;
     margin: 100px auto;
@@ -34,6 +39,8 @@ input{
     left: 5px;
 }
 .btnLogin{
+    font-family: "Oswald", sans-serif;
+    font-weight: 400;
     cursor: pointer;
     font-size: 20px;
     width: 300px;
@@ -44,11 +51,16 @@ input{
     color: #000;
     transition: all .5s;
 }
-.btnLogin:hover{
-    background-color: rgb(13, 13, 13);
-    color: #fff;
+.active{
+    font-weight: 500;
+    background-color: red;
+    color: white
 }
-.closeLogin{
+button[disabled=disabled], button:disabled {
+    cursor: not-allowed;
+}
+.closeTab{
+    cursor: pointer;
     font-size: 40px;
 }
 .iShow{
