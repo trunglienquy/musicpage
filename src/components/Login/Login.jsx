@@ -1,18 +1,36 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import axios from "axios";
 import "./Login.css";
+
 function Login({ showLogin }) {
   const [getUser, setGetUser] = useState("");
   const [getPassword, setGetPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [changeEye, setChangeEye] = useState("eye-off-outline");
 
-  const handleLogin = () => {
-    const objUser = {
-      username: getUser,
-      password: getPassword,
-    };
-    console.log(objUser);
+
+  const postAPILogin = (username, password) => {
+    return axios.post('http://26.170.181.245:8080/api/auth/login', {
+      username,
+      password
+    }, {
+      headers: {
+        'Content-Type': 'application/json',
+        'X-Requested-With': 'XMLHttpRequest'
+      }
+    });
   };
+
+
+  const handleLogin = async () => {
+    try {
+      let res = await postAPILogin(getUser, getPassword);
+      console.log(res);
+    } catch (error) {
+      console.error("Error during login:", error);
+    }
+  };
+
 
   return (
     <>
@@ -66,7 +84,6 @@ function Login({ showLogin }) {
               showLogin(false);
             }}
           ></ion-icon>
-
         </div>
       </div>
     </>
