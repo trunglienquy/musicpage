@@ -1,6 +1,9 @@
 import { useEffect, useState } from 'react'
 import './Header.css'
 
+import Tippy from "@tippyjs/react";
+
+
 function Header( {showLogin} ) {
     const [title, setTitle] = useState('How are you feeling today')
     useEffect(() => {
@@ -21,10 +24,12 @@ function Header( {showLogin} ) {
             </div>
             <div className="account">
                 <span></span>
-                <ion-icon name="person-outline" onClick={() => {
-                    showLogin(true)
-                }}>
-                </ion-icon>
+                <Tippy content="Login" placement='right'>
+                    <ion-icon name="person-outline" onClick={() => {
+                        showLogin(true)
+                    }}>
+                    </ion-icon>
+                </Tippy>
             </div>
         </div>
     )
