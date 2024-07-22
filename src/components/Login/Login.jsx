@@ -1,5 +1,4 @@
 import { useState } from "react";
-import axios from "axios";
 import "./Login.css";
 import { loginApi } from "../../services/UserServices";
 import { toast } from "react-hot-toast";
@@ -33,30 +32,8 @@ function Login({ showLogin }) {
       toast.error("User not found");
       setGetUser("");
       setGetPassword("");
-      // console.error("Error during login:", error);
     }
   };
-
-  // const postAPILogin = (username, password) => {
-  //   return axios.post('http://26.170.181.245:8080/api/auth/login', {
-  //     username,
-  //     password
-  //   }, {
-  //     headers: {
-  //       'Content-Type': 'application/json',
-  //       'X-Requested-With': 'XMLHttpRequest'
-  //     }
-  //   });
-  // };
-
-  // const handleLogin = async () => {
-  //   try {
-  //     let res = await postAPILogin(getUser, getPassword);
-  //     console.log(res);
-  //   } catch (error) {
-  //     console.error("Error during login:", error);
-  //   }
-  // };
 
   return (
     <>
