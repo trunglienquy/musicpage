@@ -1,11 +1,13 @@
 import { useEffect, useState } from 'react'
 import './Header.css'
-
+import { useNavigate  } from 'react-router-dom';
 import Tippy from "@tippyjs/react";
 
 
-function Header( {showLogin} ) {
+function Header() {
     const [title, setTitle] = useState('How are you feeling today')
+    const navigate = useNavigate();
+
     useEffect(() => {
         setTimeout(() => {
             setTitle(title === 'How are you feeling today' ? 'Welcome to Emotional music' : 'How are you feeling today');
@@ -24,10 +26,8 @@ function Header( {showLogin} ) {
             </div>
             <div className="account">
                 <span></span>
-                <Tippy content="Login" placement='right'>
-                    <ion-icon name="person-outline" onClick={() => {
-                        showLogin(true)
-                    }}>
+                <Tippy content="" placement='right'>
+                    <ion-icon name="person-outline" onClick={() => navigate('/login')}>
                     </ion-icon>
                 </Tippy>
             </div>

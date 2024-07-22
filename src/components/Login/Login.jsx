@@ -1,14 +1,24 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import "./Login.css";
 import { loginApi } from "../../services/UserServices";
 import { toast } from "react-hot-toast";
 
-function Login({ showLogin }) {
+
+function Login() {
+  const navigate = useNavigate();
   const [getUser, setGetUser] = useState("");
   const [getPassword, setGetPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [changeEye, setChangeEye] = useState("eye-off-outline");
-  const [isLoggedIn, setIsLoggedIn] = useState(false); //need fix when F5 show login
+   //need fix when F5 show login
+
+   useEffect(()=>{
+    let token = localStorage.getItem("token")
+    if (token){
+      navigate('/profile')
+    }
+   },[])
 
   const isValidEmail = (email) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -26,7 +36,7 @@ function Login({ showLogin }) {
       if (res && res.data.token) {
         toast.success("Login Success");
         localStorage.setItem("token", res.data.token);
-        setIsLoggedIn(true);
+        navigate('/profile')
       }
     } catch (error) {
       toast.error("User not found");
@@ -37,7 +47,6 @@ function Login({ showLogin }) {
 
   return (
     <>
-      {!isLoggedIn && ( // Conditionally render the login form
         <div className="formLogin">
           <h1 style={{ color: "#fff" }}>Join with us</h1>
           {!isValidEmail(getUser) && getUser && (
@@ -96,13 +105,10 @@ function Login({ showLogin }) {
             <ion-icon
               name="close-outline"
               className="closeLogin"
-              onClick={() => {
-                showLogin(false);
-              }}
+              onClick={() => navigate('/')}
             ></ion-icon>
           </div>
         </div>
-      )}
     </>
   );
 }

@@ -4,8 +4,8 @@ const listUser = () => {
     return axios.get("/api/users?page=1")
 }
 
-const loginApi = (username, password) => {
-    return axios.post("/api/auth/login", {username, password})
+const loginApi = (email, password) => {
+    return axios.post("/api/login", {email, password})
 }
 
 export { loginApi, listUser }
