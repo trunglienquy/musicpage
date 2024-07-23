@@ -1,6 +1,16 @@
+import { useState } from "react";
 import "./MusicToday.css";
 
 function Learn() {
+
+
+  const handleButtonEmotion = (value) => {
+    const emotionButton = {
+      name: value
+    }
+    console.log(emotionButton);
+  }
+
   return (
     <div className="container">
       <h1 className="musicToday">
@@ -24,6 +34,17 @@ function Learn() {
       <p className="titleVideo">
         “The greatest happiness of life is the conviction that we are loved.” – Victor Hugo
       </p>
+
+
+
+      <div className="emotionContainer">
+        <h2>How is your mood today</h2>
+        <div className="btnEmotion">
+          <button className="btnElement" onClick={() => {handleButtonEmotion('Happy')}}>Happy</button>
+          <button className="btnElement" onClick={() => {handleButtonEmotion('Sad')}}>Sad</button>
+          <button className="btnElement" onClick={() => {handleButtonEmotion('Swag')}}>Swag</button>
+        </div>
+      </div>
     </div>
   );
 }

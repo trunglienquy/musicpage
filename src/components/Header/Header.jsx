@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import './Header.css'
-import { useNavigate  } from 'react-router-dom';
+import { NavLink, useNavigate  } from 'react-router-dom';
 import Tippy from "@tippyjs/react";
 
 
@@ -19,7 +19,7 @@ function Header() {
     return(
         <div className="navbar">
             <div className="title-page">
-                <a href="/" >Emotional music</a> 
+                <NavLink style={{backgroundColor: '#1c1c1c'}} to="/" >Emotional music</NavLink> 
             </div>
             <div className='emotion-user'>
                 <p>{title}</p>
