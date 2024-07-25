@@ -33,9 +33,10 @@ function Login() {
     try {
       let res = await loginApi(getUser, getPassword);
       console.log(">>>> check res: ", res);
-      if (res && res.data.token) {
+      if (res && res.data.access_token) {
         toast.success("Login Success");
-        localStorage.setItem("token", res.data.token);
+        console.log(res.data.user.name);
+        localStorage.setItem("nameUser", res.data.user.name);
         navigate('/profile')
       }
     } catch (error) {
