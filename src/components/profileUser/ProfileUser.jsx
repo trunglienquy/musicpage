@@ -1,29 +1,32 @@
 import "./ProfileUser.css";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
-import axios from "axios";
 import { getUserInfo } from "../../services/UserServices";
+import { useEffect } from "react";
 
 function ProfileUser() {
   const navigate = useNavigate();
 
-  //can fix more, not code here
-  const getUserInfo = async () => {
+  useEffect(() => {
     const token = localStorage.getItem("authToken");
     if (!token) {
-      toast.error("No token found, please login first");
+      toast.error("Please login first");
       return;
     }
 
-    try {
-      let res = await getUserInfo(token);
-      console.log("User Info: ", res.data);
-      // Handle the user info here
-    } catch (error) {
-      console.error("Error fetching user info: ", error);
-      toast.error("Failed to fetch user info");
-    }
-  };
+    const fetchData = async () => {
+      try {
+        let res = await getUserInfo(token);
+        console.log("User Info: ", res.data);
+        // Handle the user info here
+      } catch (error) {
+        console.error("Error fetching user info: ", error);
+        toast.error("Failed to fetch user info");
+      }
+    };
+
+    fetchData();
+  }, []);
 
   return (
     <div className="containerPro">
@@ -41,7 +44,7 @@ function ProfileUser() {
         <br />
         Xin lỗi vì sự bất tiện này!
       </p>
-      <button className="backHome" onClick={getUserInfo}>
+      <button className="backHome" onClick={navigate("/")}>
         Enjoy Music Now!
       </button>
     </div>
