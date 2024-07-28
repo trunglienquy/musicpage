@@ -1,11 +1,11 @@
 import "./ProfileUser.css";
-import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import { getUserInfo } from "../../services/UserServices";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 function ProfileUser() {
-  const navigate = useNavigate();
+  const [nameUser, setNameUser] = useState("");
+  const [emailUser, setEmailUser] = useState("");
 
   useEffect(() => {
     const token = localStorage.getItem("authToken");
@@ -17,6 +17,8 @@ function ProfileUser() {
     const fetchData = async () => {
       try {
         let res = await getUserInfo(token);
+        setNameUser(res.data.name)
+        setEmailUser(res.data.email)
         console.log("User Info: ", res.data);
         // Handle the user info here
       } catch (error) {
@@ -37,16 +39,8 @@ function ProfileUser() {
         />
       </div>
       <p className="roleProfile">Member</p>
-      <p className="nameProfile">{localStorage.getItem("nameUser")}</p>
-      <p className="developer">
-        Hiện tại trang web vẫn còn đang trong quá trình phát triển, nên các chức
-        năng chưa thật sự đầy đủ.
-        <br />
-        Xin lỗi vì sự bất tiện này!
-      </p>
-      <button className="backHome" onClick={navigate("/")}>
-        Enjoy Music Now!
-      </button>
+      <p className="nameProfile">{nameUser}</p>
+      <p className="nameProfile">{emailUser}</p>
     </div>
   );
 }

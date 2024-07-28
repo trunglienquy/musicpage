@@ -1,12 +1,30 @@
+import { listEmotion } from "../../services/UserServices";
 import "./MusicToday.css";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 
 function Learn() {
+  const navigate = useNavigate();
+  const [emotions, setEmotions] = useState([])
 
-
+  useEffect(() => {
+    const getDataEmotion = async() => {
+      try {
+      const data = await listEmotion();
+        setEmotions(data.data);
+      } catch (error) {
+        console.error("Error fetching emotions:", error);
+      }
+    }
+    getDataEmotion();
+  }, [])
+  // getDataEmotion()
   const handleButtonEmotion = (value) => {
     const emotionButton = {
       name: value
     }
+    navigate(`/song?emotion=${value}`)
     console.log(emotionButton);
   }
 
@@ -39,9 +57,15 @@ function Learn() {
       <div className="emotionContainer">
         <h2>How is your mood today</h2>
         <div className="btnEmotion">
-          <button className="btnElement" onClick={() => {handleButtonEmotion('Happy')}}>Happy</button>
-          <button className="btnElement" onClick={() => {handleButtonEmotion('Sad')}}>Sad</button>
-          <button className="btnElement" onClick={() => {handleButtonEmotion('Swag')}}>Swag</button>
+        {emotions.map((emotion) => (
+          <button 
+            key= {emotion.id}
+            className="btnElement" 
+            onClick={() => {handleButtonEmotion(emotion.name)}}
+          >
+            {emotion.name}
+          </button>
+        ))}
         </div>
       </div>
     </div>

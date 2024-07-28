@@ -1,7 +1,7 @@
 import axios from "./customize-axios"
 
-const listUser = () => {
-    return axios.get("/v1/api")
+const listEmotion = () => {
+    return axios.get("/api/emotion/all")
 }
 
 const loginApi = (username, password) => {
@@ -12,4 +12,8 @@ const getUserInfo = (token) => {
     return axios.get("/api/user/get_info", {headers: {Authorization: `Bearer ${token}`}})
 }
 
-export { loginApi, listUser, getUserInfo }
+const getApiSongEmotion = (emotion) => {
+    return axios.get(`/api/song?emo=${emotion}`)
+}
+
+export { loginApi, listEmotion, getUserInfo, getApiSongEmotion }

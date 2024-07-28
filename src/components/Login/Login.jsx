@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import "./Login.css";
 import { loginApi } from "../../services/UserServices";
 import { toast } from "react-hot-toast";
+import { jwtDecode } from "jwt-decode";
 
 function Login() {
   const navigate = useNavigate();
@@ -13,9 +14,22 @@ function Login() {
   //need fix when F5 show login
 
   useEffect(() => {
-    let token = localStorage.getItem("token");
+    let token = localStorage.getItem("authToken");
     if (token) {
-      navigate("/profile");
+      try {
+        const decodedToken = jwtDecode(token);
+        const currentTime = Date.now() / 1000; // Convert to seconds
+        console.log(decodedToken.exp);
+        if (decodedToken.exp < currentTime) {
+          localStorage.removeItem("authToken");
+          navigate("/login");
+        } else {
+          navigate("/profile");
+        }
+      } catch (error) {
+        localStorage.removeItem("authToken");
+        navigate("/login");
+      }
     }
   }, []);
 
