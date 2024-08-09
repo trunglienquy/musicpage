@@ -3,6 +3,11 @@ import './Header.css'
 import { NavLink, useNavigate  } from 'react-router-dom';
 import Tippy from "@tippyjs/react";
 
+import Container from 'react-bootstrap/Container';
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
+import NavDropdown from 'react-bootstrap/NavDropdown';
+
 
 function Header() {
     const [title, setTitle] = useState('How are you feeling today')
@@ -13,8 +18,6 @@ function Header() {
             setTitle(title === 'How are you feeling today' ? 'Welcome to Emotional music' : 'How are you feeling today');
         }, 300000)
     },[title])
-
-    console.log('re-render-header');
 
     return(
         <div className="navbar">
