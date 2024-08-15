@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
-import "./Login.css";
+import { useNavigate} from "react-router-dom";
 import { loginApi } from "../../services/UserServices";
 import { toast } from "react-hot-toast";
 import { jwtDecode } from "jwt-decode";
@@ -31,6 +30,7 @@ function Login() {
         navigate("/login");
       }
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const isValidEmail = (email) => {
@@ -61,15 +61,14 @@ function Login() {
 
   return (
     <>
-      <div className="formLogin">
-        <h1 style={{ color: "#fff" }}>Join with us</h1>
+      <div className="absolute top-1/2 left-1/2 -translate-x--1/2 -translate-y--7/10 font-oswald font-medium block mt-[100px] mb-[100px] mx-auto w-[400px] h-[500px] bg-[rgb(13,13,13)] text-center pt-[20px]">
+        <h1 className="text-white mb-[50px] text-[30px]">Join with us</h1>
         {!isValidEmail(getUser) && getUser && (
-          <span className="emailValidationMessage" style={{ color: "red" }}>
+          <span className="text-red-500">
             Please enter a valid email address.
           </span>
         )}
-        <div className="usernameInp">
-          <ion-icon name="person-outline"></ion-icon>
+        <div className="relative w-full h-[70px] ml-[15px] ">
           <input
             type="email"
             value={getUser}
@@ -77,10 +76,10 @@ function Login() {
             onChange={(e) => {
               setGetUser(e.target.value);
             }}
+            className="p-[20px] w-[300px] h-[20px] outline-none bg-black text-white border-none"
           />
         </div>
-        <div className="passwordInp">
-          <ion-icon name="lock-closed-outline"></ion-icon>
+        <div className="relative w-full h-[70px] ml-[15px]">
           <input
             type={showPassword ? "text" : "password"}
             value={getPassword}
@@ -88,8 +87,9 @@ function Login() {
             onChange={(e) => {
               setGetPassword(e.target.value);
             }}
+            className="p-[20px] w-[300px] h-[20px] outline-none bg-black text-white border-none"
           />
-          <div className="iShow">
+          <div className="absolute top-[4px] right-[80px] cursor-pointer">
             <ion-icon
               name={changeEye}
               onClick={() => {
@@ -100,27 +100,28 @@ function Login() {
                     : "eye-off-outline"
                 );
               }}
+              className="cursor-pointer"
             ></ion-icon>
           </div>
         </div>
         <button
-          className={
+          className={`${
             isValidEmail(getUser) && getPassword
-              ? "active btnLogin"
-              : "btnLogin"
-          }
+              ? "font-oswald font-medium bg-red-500 text-white"
+              : "bg-[#c1c1c1] text-black"
+          } font-oswald font-medium cursor-pointer text-[20px] w-[300px] h-[40px] mt-[30px] border-none transition-all duration-500`}
           onClick={handleLogin}
           disabled={!isValidEmail(getUser) || !getPassword}
         >
           LOGIN
         </button>
         <br></br>
-        <div className="closeTab">
-          <ion-icon
-            name="close-outline"
-            className="closeLogin"
-            onClick={() => navigate("/")}
-          ></ion-icon>
+        <div className="closeTab cursor-pointer text-[40px]">
+        <ion-icon
+          name="close-outline"
+          className="closeLogin"
+          onClick={() => navigate("/")}
+        ></ion-icon>
         </div>
       </div>
     </>

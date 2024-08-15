@@ -1,6 +1,5 @@
 import { listEmotion } from "../../services/UserServices";
-import "./MusicToday.css";
-import Spinner from "react-bootstrap/Spinner";
+// import "./MusicToday.css";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { fetchTrendingVideos } from "../../services/FetchVideoYTTrend";
@@ -39,17 +38,21 @@ function Learn() {
 
   if (!video)
     return (
-      <Spinner animation="border" role="status">
-        <span className="visually-hidden">Loading...</span>
-      </Spinner>
+      <div className="font-josefinSans text-[20px] text-center absolute left-[50%] top-[50%] -translate-x-[50%] -translate-y-[-50%] text-white">
+          <span className="visually-hidden">Loading...</span>
+          <br/>
+          <span>Click here to respond to us if you see the word Loading for 1 hour</span>
+          <br/>
+          <button className="font-josefinSans mt-[10px] py-[10px] px-[40px] cursor-pointer bg-white text-black">Respond for us</button>
+      </div>
     );
 
   return (
-    <div className="container">
-      <h1 className="musicToday">
+    <div className="block bg-black text-[14px] mx-auto my-[50px] p-0 max-w-[800px] h-[500px]">
+      <h1 className="text-white text-center mb-[20px] font-josefinSans">
         Music Today <br />{" "}
         <a
-          className="linkVideo"
+          className="text-[15px] text-white"
           href={`https://www.youtube.com/watch?v=${video.id}`}
         >
           {video.snippet.title}
@@ -63,19 +66,20 @@ function Learn() {
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
         allowFullScreen
         title={video.snippet.title}
+        className="w-full h-full"
       ></iframe>
-      <p className="titleVideo">
+      <p className="text-[20px] text-center text-white">
         “The greatest happiness of life is the conviction that we are loved.” –
         Victor Hugo
       </p>
 
       <div className="emotionContainer">
-        <h2>How is your mood today</h2>
-        <div className="btnEmotion">
+        <h2 className="text-white text-center mx-o my-[50px] font-josefinSans text-[50px]">How is your mood today</h2>
+        <div className="w-[800px] flex justify-evenly items-center flex-wrap">
           {emotions.map((emotion) => (
             <button
               key={emotion.id}
-              className="btnElement"
+              className="w-[250px] h-[80px] text-[20px] rounded-[20px] mb-[40px] cursor-pointer border-none bg-[#1c1c1c] text-white"
               onClick={() => {
                 handleButtonEmotion(emotion.name);
               }}
