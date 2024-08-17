@@ -14,7 +14,7 @@ const HappyEmotion = () => {
     const emotionParam = queryParams.get("emotion");
     console.log(emotionParam);
     setEmotion(emotionParam);
-  }, [location.search])
+  }, [location.search]);
 
   useEffect(() => {
     // if (emotion) {
@@ -42,16 +42,22 @@ const HappyEmotion = () => {
         } catch (error) {
           console.log("There was an error!", error);
         }
-      }
-      fetchVideo()
-    };
+      };
+      fetchVideo();
+    }
   }, [emotion]);
 
   console.log(randomSong);
 
   return (
     <div className="containerEmotion">
-      <video autoPlay loop muted playsInline className="absolute right-0 bottom-0 z-[-1] object-cover">
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="absolute right-0 bottom-0 z-[-1] object-cover"
+      >
         <source src={video} type="video/mp4" />
       </video>
       {randomSong ? (

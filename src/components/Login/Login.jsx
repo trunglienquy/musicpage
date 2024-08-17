@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import { useNavigate} from "react-router-dom";
-import { loginApi } from "../../services/UserServices";
+import { useNavigate } from "react-router-dom";
+import { loginApi, loginAdmin } from "../../services/UserServices";
 import { toast } from "react-hot-toast";
 import { jwtDecode } from "jwt-decode";
 
@@ -30,7 +30,7 @@ function Login() {
         navigate("/login");
       }
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const isValidEmail = (email) => {
@@ -48,12 +48,32 @@ function Login() {
       console.log(">>>> check res: ", res);
       if (res && res.data.token) {
         toast.success("Login Success");
-        // console.log(res.data);
         localStorage.setItem("authToken", res.data.token);
         navigate("/profile");
       }
     } catch (error) {
       toast.error("User not found");
+      setGetUser("");
+      setGetPassword("");
+    }
+  };
+
+  const handleLoginAdmin = async () => {
+    if (!getUser || !getPassword) {
+      toast.error("Email or Password require");
+      return;
+    }
+    try {
+      let res = await loginApi(getUser, getPassword);
+      if (res && res.data.token) {
+        const tokenAdmin = res.data.token;
+        let authAdmin = await loginAdmin(tokenAdmin);
+        if (authAdmin.status === 200) {
+          navigate("/test");
+        }
+      }
+    } catch (error) {
+      toast.error("User not admin");
       setGetUser("");
       setGetPassword("");
     }
@@ -68,7 +88,7 @@ function Login() {
             Please enter a valid email address.
           </span>
         )}
-        <div className="relative w-full h-[70px] ml-[15px] ">
+        <div className="relative h-[70px] ml-[15px]">
           <input
             type="email"
             value={getUser}
@@ -79,7 +99,7 @@ function Login() {
             className="p-[20px] w-[300px] h-[20px] outline-none bg-black text-white border-none"
           />
         </div>
-        <div className="relative w-full h-[70px] ml-[15px]">
+        <div className="relative h-[70px] ml-[15px]">
           <input
             type={showPassword ? "text" : "password"}
             value={getPassword}
@@ -89,7 +109,7 @@ function Login() {
             }}
             className="p-[20px] w-[300px] h-[20px] outline-none bg-black text-white border-none"
           />
-          <div className="absolute top-[4px] right-[80px] cursor-pointer">
+          <div className="absolute top-[10px] right-[50px] cursor-pointer text-white">
             <ion-icon
               name={changeEye}
               onClick={() => {
@@ -104,6 +124,18 @@ function Login() {
             ></ion-icon>
           </div>
         </div>
+        <span
+          className={`${
+            isValidEmail(getUser) && getPassword
+              ? "font-oswald font-medium text-[#565656]"
+              : " text-black"
+          } font-oswald font-medium cursor-pointer text-[10px] w-[300px] h-[40px] mt-[30px] border-none transition-all duration-500`}
+          onClick={handleLoginAdmin}
+          disabled={!isValidEmail(getUser) || !getPassword}
+        >
+          Login with admin
+        </span>
+        <br></br>
         <button
           className={`${
             isValidEmail(getUser) && getPassword
@@ -116,12 +148,12 @@ function Login() {
           LOGIN
         </button>
         <br></br>
-        <div className="closeTab cursor-pointer text-[40px]">
-        <ion-icon
-          name="close-outline"
-          className="closeLogin"
-          onClick={() => navigate("/")}
-        ></ion-icon>
+        <div className="closeTab cursor-pointer text-[40px] text-white mt-[20px]">
+          <ion-icon
+            name="close-outline"
+            className="closeLogin"
+            onClick={() => navigate("/")}
+          ></ion-icon>
         </div>
       </div>
     </>

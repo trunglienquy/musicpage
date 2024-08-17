@@ -10,6 +10,7 @@ module.exports = {
         'oswald': ['Oswald', 'sans-serif'],
         'poppins': ['Poppins', 'sans-serif'],
         'josefinSans': ['Josefin Sans', 'sans-serif'],
+        'matemasie': ['Matemasie', 'sans-serif'],
       },
       translate: {
         '--1/2': '-50%',
