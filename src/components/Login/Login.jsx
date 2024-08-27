@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { loginApi, loginAdmin } from "../../services/UserServices";
 import { toast } from "react-hot-toast";
 import { jwtDecode } from "jwt-decode";
@@ -10,7 +10,6 @@ function Login() {
   const [getPassword, setGetPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [changeEye, setChangeEye] = useState("eye-off-outline");
-  //need fix when F5 show login
 
   useEffect(() => {
     let token = localStorage.getItem("authToken");
@@ -47,33 +46,22 @@ function Login() {
       let res = await loginApi(getUser, getPassword);
       console.log(">>>> check res: ", res);
       if (res && res.data.token) {
-        toast.success("Login Success");
-        localStorage.setItem("authToken", res.data.token);
-        navigate("/profile");
-      }
-    } catch (error) {
-      toast.error("User not found");
-      setGetUser("");
-      setGetPassword("");
-    }
-  };
-
-  const handleLoginAdmin = async () => {
-    if (!getUser || !getPassword) {
-      toast.error("Email or Password require");
-      return;
-    }
-    try {
-      let res = await loginApi(getUser, getPassword);
-      if (res && res.data.token) {
-        const tokenAdmin = res.data.token;
-        let authAdmin = await loginAdmin(tokenAdmin);
-        if (authAdmin.status === 200) {
-          navigate("/test");
+        try {
+          let checkAdmin = await loginAdmin(res.data.token);
+          if (checkAdmin.status === 200) {
+            navigate("/admin");
+            return;
+          }
+        } catch (error) {
+          if (res.status === 200){
+            toast.success("Login Success");
+            localStorage.setItem("authToken", res.data.token);
+            navigate("/profile");
+          }
         }
       }
     } catch (error) {
-      toast.error("User not admin");
+      toast.error("User not found");
       setGetUser("");
       setGetPassword("");
     }
@@ -124,18 +112,6 @@ function Login() {
             ></ion-icon>
           </div>
         </div>
-        <span
-          className={`${
-            isValidEmail(getUser) && getPassword
-              ? "font-oswald font-medium text-[#565656]"
-              : " text-black"
-          } font-oswald font-medium cursor-pointer text-[10px] w-[300px] h-[40px] mt-[30px] border-none transition-all duration-500`}
-          onClick={handleLoginAdmin}
-          disabled={!isValidEmail(getUser) || !getPassword}
-        >
-          Login with admin
-        </span>
-        <br></br>
         <button
           className={`${
             isValidEmail(getUser) && getPassword

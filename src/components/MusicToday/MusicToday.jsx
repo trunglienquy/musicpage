@@ -50,7 +50,7 @@ function Learn() {
   return (
     <div className="block bg-black text-[14px] mx-auto my-[50px] p-0 max-w-[800px] h-[500px]">
       <h1 className="text-white text-center mb-[20px] font-josefinSans">
-        Music Today <br />{" "}
+        Top Trending Music - VIETNAM <br />{" "}
         <a
           className="text-[15px] text-white"
           href={`https://www.youtube.com/watch?v=${video.id}`}
@@ -68,10 +68,6 @@ function Learn() {
         title={video.snippet.title}
         className="w-full h-full"
       ></iframe>
-      <p className="text-[20px] text-center text-white">
-        “The greatest happiness of life is the conviction that we are loved.” –
-        Victor Hugo
-      </p>
 
       <div className="emotionContainer">
         <h2 className="text-white text-center mx-o my-[50px] font-josefinSans text-[50px]">How is your mood today</h2>

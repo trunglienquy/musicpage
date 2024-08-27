@@ -19,7 +19,10 @@ function Header() {
             {/* <div className='font-poppins font-extralight text-[25px]'>
                 <p>{title}</p>
             </div> */}
-            <div className="px-[30px] py-0 text-[20px] cursor-pointer w-[300px]">
+            <div className="px-[30px] py-0 text-[20px] cursor-pointer w-[300px] flex justify-around items-center font-oswald font-light">
+                <div className=''>
+                    <NavLink to="/about" >About</NavLink>
+                </div>
                 <ion-icon name="person-outline" onClick={() => navigate('/login')}>
                 </ion-icon>
             </div>
