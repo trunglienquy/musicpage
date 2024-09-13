@@ -26,32 +26,6 @@ const getInfoMusicVideo = async (id_video) => {
     console.error("Error fetching trending videos:", error);
     return null;
   }
-
-//   fetch()
-//   .then(response => response.json())
-//   .then(data => {
-//     if (data.items.length > 0) {
-//       const videoDetails = data.items[0];
-//       const title = videoDetails.snippet.title;
-//       const description = videoDetails.snippet.description;
-//       const channelTitle = videoDetails.snippet.channelTitle;
-//       const publishedAt = videoDetails.snippet.publishedAt;
-//       const viewCount = videoDetails.statistics.viewCount;
-//       const likeCount = videoDetails.statistics.likeCount;
-//       const commentCount = videoDetails.statistics.commentCount;
-      
-//       console.log(`Title: ${title}`);
-//       console.log(`Description: ${description}`);
-//       console.log(`Channel: ${channelTitle}`);
-//       console.log(`Published at: ${publishedAt}`);
-//       console.log(`Views: ${viewCount}`);
-//       console.log(`Likes: ${likeCount}`);
-//       console.log(`Comments: ${commentCount}`);
-//     } else {
-//       console.log('No video found with the given ID.');
-//     }
-//   })
-//   .catch(error => console.error('Error:', error));
 }
 
 export { fetchTrendingVideos , getInfoMusicVideo };

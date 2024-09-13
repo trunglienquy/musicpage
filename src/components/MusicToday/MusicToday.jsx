@@ -39,11 +39,15 @@ function Learn() {
   if (!video)
     return (
       <div className="font-josefinSans text-[20px] text-center absolute left-[50%] top-[50%] -translate-x-[50%] -translate-y-[-50%] text-white">
-          <span className="visually-hidden">Loading...</span>
-          <br/>
-          <span>Click here to respond to us if you see the word Loading for 1 hour</span>
-          <br/>
-          <button className="font-josefinSans mt-[10px] py-[10px] px-[40px] cursor-pointer bg-white text-black">Respond for us</button>
+        <span className="visually-hidden">Loading...</span>
+        <br />
+        <span>
+          Click here to respond to us if you see the word Loading for 1 hour
+        </span>
+        <br />
+        <button className="font-josefinSans mt-[10px] py-[10px] px-[40px] cursor-pointer bg-white text-black">
+          Respond for us
+        </button>
       </div>
     );
 
@@ -52,25 +56,27 @@ function Learn() {
       <h1 className="text-white text-center mb-[20px] font-josefinSans">
         Top Trending Music - VIETNAM <br />{" "}
         <a
-          className="text-[15px] text-white"
+          className="lg:text-[15px] xl:text-[15px] md:text-[15px] sm:text-[15px] text-white 350px:text-[10px]"
           href={`https://www.youtube.com/watch?v=${video.id}`}
         >
           {video.snippet.title}
         </a>
       </h1>
-      <iframe
-        width="560"
-        height="315"
-        src={`https://www.youtube.com/embed/${video.id}`}
-        frameBorder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowFullScreen
-        title={video.snippet.title}
-        className="w-full h-full"
-      ></iframe>
+      <div className="flex justify-center items-center">
+        <iframe
+          className="sm:w-[560px] md:w-[700px] lg:w-full h-[315px] sm:h-[225px] md:h-[281px] lg:h-[315px]"
+          src={`https://www.youtube.com/embed/${video.id}`}
+          frameBorder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+          title={video.snippet.title}
+        ></iframe>
+      </div>
 
       <div className="emotionContainer">
-        <h2 className="text-white text-center mx-o my-[50px] font-josefinSans text-[50px]">How is your mood today</h2>
+        <h2 className="text-white text-center mx-o my-[50px] font-josefinSans text-[50px] 350px:text-[25px]">
+          How is your mood today
+        </h2>
         <div className="w-[800px] flex justify-evenly items-center flex-wrap">
           {emotions.map((emotion) => (
             <button
