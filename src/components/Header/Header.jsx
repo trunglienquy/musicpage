@@ -1,7 +1,6 @@
 // import { useEffect, useState } from 'react'
 import { useState } from "react";
 import { NavLink, useNavigate, Link } from "react-router-dom";
-import logo from "../../assets/logo.png";
 import { assets } from "../../assets/assets";
 
 function Header() {
@@ -25,6 +24,10 @@ function Header() {
         </NavLink>
         <NavLink to="/technical" className="flex flex-col items-center gap-1">
           <p>Technical</p>
+          <hr className="w-2/4 border-none h-[1.5px] bg-white hidden"></hr>
+        </NavLink>
+        <NavLink to="/trunglienquy" className="flex flex-col items-center gap-1">
+          <p><i>Github - FontEnd</i></p>
           <hr className="w-2/4 border-none h-[1.5px] bg-white hidden"></hr>
         </NavLink>
       </ul>

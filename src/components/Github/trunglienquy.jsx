@@ -12,7 +12,7 @@ function Trunglienquy() {
         developing web projects using cutting-edge technologies like ReactJS,
         Tailwind CSS, JavaScript, and Python. My passion for technology drives
         me to continually enhance my skills and contribute to innovative
-        projects in the tech industry.
+        projects in the tech industry!.
       </p>
       <h1 className="text-white">This is my contribution</h1>
       <img

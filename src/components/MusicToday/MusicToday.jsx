@@ -56,7 +56,7 @@ function Learn() {
       <h1 className="text-white text-center mb-[20px] font-josefinSans">
         Top Trending Music - VIETNAM <br />{" "}
         <a
-          className="lg:text-[15px] xl:text-[15px] md:text-[15px] sm:text-[15px] text-white 350px:text-[10px]"
+          className="text-white"
           href={`https://www.youtube.com/watch?v=${video.id}`}
         >
           {video.snippet.title}

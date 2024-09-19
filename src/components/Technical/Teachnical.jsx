@@ -1,6 +1,6 @@
 function Technical() {
     return (
-      <div className="text-white bg-black p-20 w-[100rem]">
+      <div className="text-white bg-black grid gap-8 mt-[30px]">
         <div className="frontend mb-8">
           <h1 className="text-[40px] font-bold mb-4">Frontend Developer</h1>
           <p className="text-gray-300 leading-relaxed mb-4">

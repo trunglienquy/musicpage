@@ -11,7 +11,7 @@ function About() {
   };
 
   return (
-    <div className="bg-black text-gray-300 p-8 rounded-lg shadow-lg max-w-3xl mx-auto mt-10">
+    <div className="bg-black text-gray-300 p-8 max-w-3xl mx-auto mt-10 grid gap-8">
       <h1 className="text-3xl font-bold text-white mb-4">
         We are Emotion Music.
       </h1>
@@ -32,7 +32,7 @@ function About() {
         <textarea
           rows="4"
           cols="40"
-          className="outline-none w-[600px] p-[20px] resize-none text-white bg-gray-900 font-normal"
+          className="outline-none w-[300px] md:w-[600px] xl:w-[600px] p-[20px] resize-none text-white bg-gray-900 font-normal"
           value={textValue}
           onChange={(e) => {
             setTextValue(e.target.value);
