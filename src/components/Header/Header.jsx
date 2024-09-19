@@ -1,57 +1,82 @@
 // import { useEffect, useState } from 'react'
 import { useState } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate, Link } from "react-router-dom";
+import logo from "../../assets/logo.png";
+import { assets } from "../../assets/assets";
 
 function Header() {
-  // const [title, setTitle] = useState('How are you feeling today')
   const navigate = useNavigate();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <div className="w-full h-[120px] bg-[#1c1c1c] flex justify-between items-center text-white">
-      <div className="font-inspiration font-normal text-[50px] 350px:text-[35px] sm:text-[44px] md:text-[54px] lg:text-[54px] xl:text-[64px] px-[78px] py-0 cursor-pointer">
-        <NavLink to="/">Emotional music</NavLink>
-      </div>
-      {/* <div className='font-poppins font-extralight text-[25px]'>
-                <p>{title}</p>
-            </div> */}
-      <div className="hidden xl:flex px-[30px] py-0 text-[20px] cursor-pointer w-[300px] justify-around items-center font-oswald font-light ">
-        <div className="">
-          <NavLink to="/about">About</NavLink>
-        </div>
-        <div className="">
-          <NavLink to="/technical">Technical</NavLink>
-        </div>
-        <ion-icon
-          name="person-outline"
+    <div className="flex items-center justify-between py-5 font-medium">
+      <NavLink to="/">
+        <img src={assets.logo} alt="" className="w-24" />
+      </NavLink>
+
+      <ul className="hidden sm:flex gap-5 text-lg text-white">
+        <NavLink to="/" className="flex flex-col items-center gap-1">
+          <p>Home</p>
+          <hr className="w-2/4 border-none h-[1.5px] bg-white hidden"></hr>
+        </NavLink>
+        <NavLink to="/about" className="flex flex-col items-center gap-1">
+          <p>About</p>
+          <hr className="w-2/4 border-none h-[1.5px] bg-white hidden"></hr>
+        </NavLink>
+        <NavLink to="/technical" className="flex flex-col items-center gap-1">
+          <p>Technical</p>
+          <hr className="w-2/4 border-none h-[1.5px] bg-white hidden"></hr>
+        </NavLink>
+      </ul>
+
+      <div className="flex items-center gap-6 text-white text-lg cursor-pointer">
+        <img
+          src={assets.profile_icon}
+          alt=""
+          className="w-5 cursor-pointer"
           onClick={() => navigate("/login")}
-        ></ion-icon>
+        />
+        <img
+            onClick={() => setIsMenuOpen(true)}
+            src={assets.menu_icon}
+            alt=""
+            className="w-5 cursor-pointer sm:hidden"
+          />
       </div>
-      <i
-        className="bx bx-menu z-50 xl:hidden block cursor-pointer mr-[50px] text-[40px] 350px:text-[29px]"
-        onClick={() => setIsMenuOpen(!isMenuOpen)}
-      ></i>
-      {console.log(isMenuOpen)}
       <div
-        className={`absolute z-0 xl:hidden top-24 left-0 w-full h-[150px] bg-[#1c1c1c] flex flex-col items-center gap-6 transform transition-transform ${
-          isMenuOpen ? "opacity-100" : "opacity-0"
+        className={`absolute top-0 right-0 bottom-0 overflow-hidden bg-black transition-all ${
+          isMenuOpen ? "w-full" : "w-0"
         }`}
-        style={{ transition: "transform .3s ease, opacity .3s ease" }}
       >
-        <div className="mt-[20px] text-center">
-          <div className="mb-[15px]" onClick={() => setIsMenuOpen(false)}>
-            <NavLink to="/about">About</NavLink>
+        <div className="flex flex-col text-white">
+          <div
+            onClick={() => setIsMenuOpen(false)}
+            className="flex items-center gap-4 p-3 cursor-pointer"
+          >
+            <img src={assets.dropdown_icon} alt="" className="h-4 rotate-180" />
+            <p>Back</p>
           </div>
-          <div className="mb-[15px]" onClick={() => setIsMenuOpen(false)}>
-            <NavLink to="/technical">Technical</NavLink>
-          </div>
-          <ion-icon
-            name="person-outline"
-            onClick={() => {
-              navigate("/login");
-              setIsMenuOpen(false);
-            }}
-          ></ion-icon>
+          <NavLink
+            onClick={() => setIsMenuOpen(false)}
+            className="py-2 pl-6"
+            to="/"
+          >
+            HOME
+          </NavLink>
+          <NavLink
+            onClick={() => setIsMenuOpen(false)}
+            className="py-2 pl-6"
+            to="/about"
+          >
+            ABOUT
+          </NavLink>
+          <NavLink
+            onClick={() => setIsMenuOpen(false)}
+            className="py-2 pl-6"
+            to="/technical"
+          >
+            TECHNICAL
+          </NavLink>
         </div>
       </div>
     </div>

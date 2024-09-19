@@ -12,7 +12,7 @@ import ProfileUser from "./components/profileUser/ProfileUser";
 function App() {
   return (
     <>
-      <div className="App">
+      <div className="px-4 sm:px-[5vw] md:px-[7vw] lg:px-[9vw]">
         <Header />
         <Routes>
           <Route path="/login" element={<Login />} />

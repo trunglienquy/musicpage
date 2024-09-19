@@ -11,3 +11,6 @@
 body{
   @apply bg-black
 }
+a.active hr{
+  display: block
+}
