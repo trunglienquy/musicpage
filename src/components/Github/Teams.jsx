@@ -1,9 +1,9 @@
 import { assets } from "../../assets/assets";
 
-function Trunglienquy() {
+function Teams() {
   return (
     <div className="grid gap-6 font-medium text-[20px]">
-      <h1 className="text-white">About me</h1>
+      <h1 className="text-white">PF: FrontEnd</h1>
       <p className="text-white">
         I am currently a part-time lecturer specializing in Scratch, GameMaker
         Studio, Python, and web programming. I am also pursuing a degree in
@@ -23,4 +23,4 @@ function Trunglienquy() {
     </div>
   );
 }
-export default Trunglienquy;
+export default Teams;

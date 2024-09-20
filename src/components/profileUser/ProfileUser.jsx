@@ -37,10 +37,10 @@ function ProfileUser() {
   };
 
   return (
-    <div className="w-[500px] h-[700px] block my-[50px] mx-auto bg-[rgb(15,15,15)] rounded-[50px] text-center font-josefinSans text-[20px] text-white">
+    <div className="w-[300px] h-[700px] sm:w-[400px] lg:w-[500px]  xl:w-[500px] block my-[50px] mx-auto bg-[rgb(15,15,15)] rounded-[50px] text-center font-josefinSans text-[20px] text-white">
       <div className="block w-[150px] h-[150px] my-[50px] mx-auto pt-[20px]">
         <img
-          src="https://scontent.fsgn2-4.fna.fbcdn.net/v/t1.6435-9/45901944_964430937078341_8738149665662304256_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=7b2446&_nc_ohc=lbYhqHgvcUIQ7kNvgE9rkr7&_nc_ht=scontent.fsgn2-4.fna&oh=00_AYCEkKTYluzupDfqyQfk3bNWd376BokrIWPksYKnbLJtXQ&oe=66C5D602"
+          src="https://static.vecteezy.com/system/resources/previews/019/879/186/original/user-icon-on-transparent-background-free-png.png"
           alt="ImageAVT"
           className="rounded-[50%] w-[150px] h-[150px] object-cover mt-[50px]"
         />

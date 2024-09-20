@@ -55,7 +55,7 @@ const HappyEmotion = () => {
 
   return (
     <>
-      <div className="w-[100%] h-[700px] relative">
+      <div className="w-[100%] h-[300px] sm:h-[350px] lg:h-[700px] relative mt-[100px] lg:mt-[0px]">
         <video
           autoPlay
           loop
@@ -67,9 +67,7 @@ const HappyEmotion = () => {
         </video>
         {randomSong ? (
           <iframe
-            className="absolute left-[50%] top-[50%] -translate-x-[50%] -translate-y-[50%] w-[1000px] h-[500px]"
-            width="600"
-            height="315"
+            className="absolute left-[50%] top-[30%] xl:top-[50%]  lg:top-[50%] -translate-x-[50%] -translate-y-[50%] sm:w-[560px] md:w-[700px] lg:w-full h-[315px] sm:h-[225px] md:h-[281px] lg:h-[500px]"
             src={`https://www.youtube.com/embed/${randomSong.yt_id}`}
             title="YouTube video player"
             frameBorder="0"

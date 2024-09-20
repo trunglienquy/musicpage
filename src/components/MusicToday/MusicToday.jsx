@@ -77,11 +77,11 @@ function Learn() {
         <h2 className="text-white text-center mx-o my-[50px] font-josefinSans text-[50px] 350px:text-[25px]">
           How is your mood today
         </h2>
-        <div className="w-[800px] flex justify-evenly items-center flex-wrap">
+        <div className="w-full flex justify-evenly items-center flex-wrap xl:w-[800px]">
           {emotions.map((emotion) => (
             <button
               key={emotion.id}
-              className="w-[250px] h-[80px] text-[20px] rounded-[20px] mb-[40px] cursor-pointer border-none bg-[#1c1c1c] text-white"
+              className="w-[150px] xl:w-[250px] md:w-[250px] sm:w-[200px] h-[80px] text-[20px] rounded-[20px] mb-[40px] cursor-pointer border-none bg-[#1c1c1c] text-white"
               onClick={() => {
                 handleButtonEmotion(emotion.name);
               }}

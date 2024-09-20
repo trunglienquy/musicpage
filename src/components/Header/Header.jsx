@@ -26,8 +26,8 @@ function Header() {
           <p>Technical</p>
           <hr className="w-2/4 border-none h-[1.5px] bg-white hidden"></hr>
         </NavLink>
-        <NavLink to="/trunglienquy" className="flex flex-col items-center gap-1">
-          <p><i>Github - FontEnd</i></p>
+        <NavLink to="/teams" className="flex flex-col items-center gap-1">
+          <p>Teams</p>
           <hr className="w-2/4 border-none h-[1.5px] bg-white hidden"></hr>
         </NavLink>
       </ul>
@@ -79,6 +79,13 @@ function Header() {
             to="/technical"
           >
             TECHNICAL
+          </NavLink>
+          <NavLink
+            onClick={() => setIsMenuOpen(false)}
+            className="py-2 pl-6"
+            to="/teams"
+          >
+            TEAMS
           </NavLink>
         </div>
       </div>
